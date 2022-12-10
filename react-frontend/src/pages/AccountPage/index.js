@@ -2,16 +2,21 @@ import CatProfile from './images/icons8-cat-profile-80.png'
 import Timer from './images/icons8-timer-64.png'
 import Fire from './images/icons8-fire-94.png'
 import Rank from './images/icons8-ranking-64.png'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+
 
 const AccountPage = () => {
+    const {currentUser} = useContext(AuthContext)
+
     return ( <div className="accountPage">
             <div class="user">
         <div class="avatar">
             <img src={CatProfile} alt="profile icon with cat on it"/>
         </div>
         <div class="userinfo">
-            <h3>Username</h3>
-            <p>email@email.co.uk</p>
+            <h3>{currentUser && currentUser.displayName}</h3>
+            <p>{currentUser && currentUser.email}</p>
         </div>
     </div>
 

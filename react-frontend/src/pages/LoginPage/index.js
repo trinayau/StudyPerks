@@ -62,8 +62,7 @@ export default function LoginPage() {
       const res = await signInWithEmailAndPassword(auth, email, password
       );
       console.log(res);
-      login(res);
-      navigate('/studyroom/1')
+      navigate('/')
 
     } catch(err){
       setErr(true);

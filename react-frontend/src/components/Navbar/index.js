@@ -251,11 +251,11 @@ function NavBar() {
           
 {/* End mobile */}
 
-          <Box sx={{ flexGrow: 0}}>
+          {currentUser && <Box sx={{ flexGrow: 0}}>
             <Tooltip title="Open settings">
             
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="K" src="/static/images/avatar/2.jpg" sx={{backgroundColor:'#EA526F'}}/>
+                <Avatar alt={currentUser && currentUser.displayName} src="/static/images/avatar/2.jpg" sx={{backgroundColor:'#EA526F'}}/>
               </IconButton>
             
             </Tooltip>
@@ -285,7 +285,7 @@ function NavBar() {
               
               
             </Menu>
-          </Box>
+          </Box>}
         </Toolbar>
       </Container>
     </AppBar>
