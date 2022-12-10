@@ -9,6 +9,7 @@ const StudyRoom = () => {
         <div className="studyroom-container">
         <Sidebar/>
         <Chat/>
+        
 
         </div>
     </div> );

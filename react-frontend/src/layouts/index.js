@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router-dom';
-import {Navbar} from '../components';
+import {Navbar, Footer} from '../components';
 import './style.css';
 
 const Layout = () => {
@@ -8,6 +8,7 @@ const Layout = () => {
     return ( <div className="flex-wrapper" style={{margin: 0, padding: 0}}>
         <Navbar />
         <Outlet/>
+        <Footer />
     </div> );
 }
  

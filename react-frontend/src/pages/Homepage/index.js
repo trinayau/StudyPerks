@@ -1,5 +1,4 @@
 
-import Hero from './images/hero-img.png'
 import OnlineChat from './images/online-chat.png'
 import Timer from './images/timer.png';
 import Coffee from './images/coffee.png';
@@ -8,7 +7,6 @@ import BubbleChat from './images/bubble-chat.png';
 import Hours from './images/24-hours-support.png';
 
 const Homepage = () => {
-
     return ( 
     <div className="home">
         <div className="header">
@@ -65,7 +63,7 @@ const Homepage = () => {
     <div class="hr"><hr /></div>
     {/* <!-- room selection  --> */}
     <div class="features">
-      <a id="join"></a>
+      <a href="#" id="join"></a>
       <h3>Join a room</h3>
 
       <div class="section">
@@ -144,34 +142,6 @@ const Homepage = () => {
               Available worldwide, open 24/7 <br />You will always find a group
               to study with no matter what time it is
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer">
-      <div class="container">
-        <div class="section">
-          <div class="col">
-            <a href="/" id="contact"></a>
-            <div class="logo">StudyPerks</div>
-          </div>
-          <div class="col">
-            <span>Contact information</span><br /><br />
-            Telephone: xxxxxxxxxx<br />
-            Email: contact@studyperks.com<br />
-            <a href="/">Online Chat</a><br />
-            <a href="/">Contact form</a>
-          </div>
-          <div class="col">
-            <div class="socials">
-              <span>Follow us</span><br />
-              <div class="social-icons">
-                <img src="images\icons8-discord-new.svg" alt="discord icon"/>
-                <img src="images\icons8-facebook.svg" alt="facebook icon"/>
-                <img src="images\icons8-instagram.svg" alt="instagram icon"/>
-                <img src="images\icons8-twitter.svg" alt="twitter icon"/>
-              </div>
-            </div>
           </div>
         </div>
       </div>

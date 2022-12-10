@@ -4,25 +4,53 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import { IconButton } from '@mui/material';
 import Messages from '../Messages';
 import Input from '../Input';
+import Pomodoro from '../Pomodoro';
+import { useState } from 'react';
 
 const Chat = () => {
+
+    const [showPomodoro, setShowPomodoro] = useState(true);
+    const [showChat, setShowChat] = useState(false);
+    const [showGame, setShowGame] = useState(false);
+
+    const handlePomodoro = () => {
+        setShowPomodoro(true);
+        setShowChat(false);
+        setShowGame(false);
+    }
+
+    const handleChat = () => {
+        setShowPomodoro(false);
+        setShowChat(true);
+        setShowGame(false);
+    }
+
+    const handleGame = () => {
+        setShowPomodoro(false);
+        setShowChat(false);
+        setShowGame(true);
+    }
+
+    const handleMessage = () => {
+        console.log("message")
+    }
     return ( <div className="chat">
        <div className="chatInfo">
             7-8pm Study Group
         <div className="chatIcons">
-            <IconButton>
+            <IconButton onClick={()=>handlePomodoro()}>
                 <AccessAlarmIcon />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={()=>handleChat()}>
                 <ChatBubbleOutlineIcon />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={()=>handleGame()}>
                 <SportsEsportsIcon />
             </IconButton>
         </div>
        </div>
-       <Messages/>
-         <Input/>
+         {showPomodoro && <Pomodoro/>}
+            {showChat && (<> <Messages/> <Input/></>)}
     </div> );
 }
  

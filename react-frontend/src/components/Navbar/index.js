@@ -36,17 +36,18 @@ function NavBar() {
 
 
   useEffect(() => {
-      if (window.location.pathname === "/" && currentUser) {
+      if (window.location.href === "http://localhost:3000/" && currentUser) {
           setHomePage(true);
-      } else if(window.location.pathname==="/account" && currentUser){
+      } else if(window.location.href==="http://localhost:3000/account" && currentUser){
+        setHomePage(false);
           setProfilePage(true);
       } 
-      
       else {
           setHomePage(false);
+          setProfilePage(false);
       }
       
-  }, [window.location.pathname]);
+  }, [window.location.href]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

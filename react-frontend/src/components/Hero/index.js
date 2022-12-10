@@ -1,8 +1,6 @@
 import HeroImg from "../../pages/Homepage/images/hero-img.png";
-import { useState, useEffect } from "react";
+
 const Hero = () => {
-
-
 
   return (
     <>
