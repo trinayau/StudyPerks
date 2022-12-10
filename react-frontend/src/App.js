@@ -1,6 +1,6 @@
 import {Routes, Route, Navigate} from 'react-router-dom';
 import {default as Layout} from './layouts';
-import { LoginPage, SignUpPage, Homepage, StudyRoom } from './pages';
+import { LoginPage, SignUpPage, Homepage, StudyRoom, AccountPage } from './pages';
 import { AuthContext } from './context/AuthContext';
 import { useContext } from 'react';
 
@@ -12,6 +12,8 @@ function App() {
     if(!currentUser){
       return <Navigate to="/login" />
     }
+  
+    return children;
   }
 
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/studyroom/:roomId" element={<ProtectedRoute><StudyRoom /></ProtectedRoute>} />
+          <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
 
           </Route>
       </Routes>

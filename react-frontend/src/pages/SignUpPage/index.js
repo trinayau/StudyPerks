@@ -76,7 +76,7 @@ export default function SignUpPage() {
     <div>
       <div
         className="register"
-        style={{ backgroundColor: "#EA526F", height: "100vh" }}
+        style={{  height: "100vh" }}
       >
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -165,7 +165,7 @@ export default function SignUpPage() {
 
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2" sx={{ color: "white" }}>
+                  <Link href="#" variant="body2" sx={{ color: "black" }}>
                     Forgot password?
                   </Link>
                 </Grid>
@@ -173,7 +173,7 @@ export default function SignUpPage() {
                   <Link
                     onClick={() => handleLink("/login")}
                     variant="body2"
-                    sx={{ color: "white" }}
+                    sx={{ color: "black" }}
                   >
                     {"Have an account already? Sign in"}
                   </Link>

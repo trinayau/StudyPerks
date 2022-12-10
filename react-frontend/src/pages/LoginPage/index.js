@@ -16,6 +16,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from "react";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebase";
+import { AuthContext } from "../../context/AuthContext";
 
 
 function Copyright(props) {
@@ -42,6 +43,8 @@ export default function LoginPage() {
 
   const [err,setErr] = useState(false);
 
+  const {login} = useContext(AuthContext);
+
 
   const [state, setState] = useState({
     open: true,
@@ -59,7 +62,8 @@ export default function LoginPage() {
       const res = await signInWithEmailAndPassword(auth, email, password
       );
       console.log(res);
-      navigate('/')
+      login(res);
+      navigate('/studyroom/1')
 
     } catch(err){
       setErr(true);
@@ -102,7 +106,7 @@ export default function LoginPage() {
             You have successfully registered! Please login to continue.
         </Alert>
       </Snackbar>
-      <div style={{backgroundColor: "#f5f5f5"}}>
+      <div style={{}}>
       <Container component="main" maxWidth="xs" >
         <CssBaseline />
         <Box
@@ -171,7 +175,7 @@ export default function LoginPage() {
             {err && <Typography variant="body2" color="error" align="center" sx={{ mt: 3, mb: 2 }}>
               Invalid Credentials
             </Typography>}
-            
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2" sx={{ color: "#84a98c" }}>

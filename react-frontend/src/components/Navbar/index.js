@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {AuthContext} from '../../context/AuthContext';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
+import Hero from '../Hero';
+import Profile from '../Profile';
+import { useState, useEffect } from 'react';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -21,11 +24,29 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase';
 
 
+
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const navigate = useNavigate();
+
+  const [homepage, setHomePage] = useState(false);
+  const [profilePage, setProfilePage] = useState(false);
+
+
+  useEffect(() => {
+      if (window.location.pathname === "/" && currentUser) {
+          setHomePage(true);
+      } else if(window.location.pathname==="/account" && currentUser){
+          setProfilePage(true);
+      } 
+      
+      else {
+          setHomePage(false);
+      }
+      
+  }, [window.location.pathname]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -62,9 +83,9 @@ function NavBar() {
 
   const { currentUser } = useContext(AuthContext);
 
-
-
   return (
+    <div className='header'>
+      <div className="container">
     <AppBar position="static" style={{background:'none', boxShadow:'none', padding: 0, maxWidth: '100% !important'}}>
       <Container maxWidth="false">
         <Toolbar disableGutters sx={{ justifyContent: "space-between", padding: 0}}>
@@ -267,6 +288,12 @@ function NavBar() {
         </Toolbar>
       </Container>
     </AppBar>
+
+    {homepage ? <Hero/> : null}
+    {profilePage ? <Profile/> : null}
+    </div>
+    </div>
+    
   );
 }
 export default NavBar;
