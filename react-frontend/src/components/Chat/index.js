@@ -5,6 +5,7 @@ import { IconButton } from '@mui/material';
 import Messages from '../Messages';
 import Input from '../Input';
 import Pomodoro from '../Pomodoro';
+import SimonGame from '../SimonGame';
 import { useState } from 'react';
 
 const Chat = () => {
@@ -51,6 +52,7 @@ const Chat = () => {
        </div>
          {showPomodoro && <Pomodoro/>}
             {showChat && (<> <Messages/> <Input/></>)}
+            {showGame && <SimonGame/>}
     </div> );
 }
  

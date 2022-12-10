@@ -12,6 +12,10 @@
     justify-content: center;
 }
 
+.studyroom p{
+    color: white!important;
+}
+
 .studyroom-container{
     border: 1px solid #000;
     border-radius: 10px;

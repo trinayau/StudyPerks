@@ -1,9 +1,9 @@
-body {
+/* body {
     margin: auto;
     box-sizing: border-box;
     max-width: 1000px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+} */
 
 .gamecontainer {
     display: flex;
@@ -11,9 +11,11 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
+
 }
 .instructions {
     margin-left: 30px;
+
 }
 
 .game {
@@ -24,7 +26,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-.btn {
+.gbtn {
     width: 200px;
     height: 200px;
     border-radius: 20px;
@@ -49,6 +51,18 @@ body {
 
 .lose {
     background-color: darkred;
+}
+
+.game-start:hover{
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+}
+/* simon game flash: */
+.flash {
+    opacity: 0.5
+    
 }
 
 @media only screen and (max-width: 400px) {
