@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 const Profile = () => {
+
     return ( <>
     <hr/>
 
@@ -10,7 +12,9 @@ const Profile = () => {
         <div class="col-4">
             Users: 3/10<br/>
             Timer: 25 | 5<br/>
-            Subject: General
+            Subject: General<br/>
+            <span><Link to="/studyroom/1">Join</Link></span>
+
         </div>
         <div class="col-4">
             Users: 7/10<br/>
@@ -31,7 +35,7 @@ const Profile = () => {
 
     <div class="room-links prof">
         <div class="btn">create your own</div>
-        <a href="#">See more availiable rooms <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        <a href="#">See more available rooms <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
     </div>
 </div>
     </> );

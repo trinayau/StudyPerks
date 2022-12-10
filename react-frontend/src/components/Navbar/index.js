@@ -197,8 +197,8 @@ function NavBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', lg: 'flex', xl: 'flex', flexDirection: "row",    justifyContent: "end" } }}>
            
             <Button
-                key={'products'}
-                onClick={() => handleLink('/products')}
+                key={'account'}
+                onClick={() => handleLink('/account')}
                 sx={{ my: 2, color: '#07060A', display: 'block', "&:hover": {
                   color: '#52796f',
                   textDecoration: 'none',
