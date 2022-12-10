@@ -12,8 +12,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Alert, Snackbar } from '@mui/material';
 
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from "react";
+import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../../firebase";
 
 
 function Copyright(props) {
@@ -36,6 +38,10 @@ function Copyright(props) {
 
 export default function LoginPage() {
 
+  const navigate = useNavigate();
+
+  const [err,setErr] = useState(false);
+
 
   const [state, setState] = useState({
     open: true,
@@ -44,10 +50,21 @@ export default function LoginPage() {
   });
   const { vertical, horizontal, open } = state;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // loginUser(event);
+    const email  = event.target[0].value;
+    const password = event.target[2].value;
+
+    try{
+      const res = await signInWithEmailAndPassword(auth, email, password
+      );
+      console.log(res);
+      navigate('/')
+
+    } catch(err){
+      setErr(true);
+    }
+
   };
 
    useEffect(()=>{
@@ -151,6 +168,10 @@ export default function LoginPage() {
             >
               Sign In
             </Button>
+            {err && <Typography variant="body2" color="error" align="center" sx={{ mt: 3, mb: 2 }}>
+              Invalid Credentials
+            </Typography>}
+            
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2" sx={{ color: "#84a98c" }}>

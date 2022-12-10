@@ -1,3 +1,4 @@
+// MUI Imports
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,13 +12,16 @@ import LockIcon from "@mui/icons-material/Lock";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import "./style.css";
-
+// React Imports
 import { useNavigate } from "react-router-dom";
-
 import { useContext, useEffect, useState } from "react";
+// Context Imports
+import {db} from "../../firebase";
 
+// Firebase Imports
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore"; 
 
 
 function Copyright(props) {
@@ -53,7 +57,15 @@ export default function SignUpPage() {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(res.user, { displayName });
-      handleLink("/login");
+      await setDoc(doc(db, "users", res.user.uid), {
+        displayName: displayName,
+        email: email,
+        uid: res.user.uid,
+        points: 0
+      });
+      navigate("/login?redirect=true")
+
+
     } catch(err){
       setErr(true);
 

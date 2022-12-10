@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import {AuthContext} from '../../context/AuthContext';
+import { useContext, useEffect } from 'react';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,9 +17,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
-const pageLinks = ['/products', '/pricing', '/blog'];
-const settings = ['Orders'];
-// const loggedIn = true;
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 
 function NavBar() {
@@ -48,8 +49,19 @@ function NavBar() {
   };
 
   const logoutuser = () => {
-    console.log('logout');
+
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log('Signed out');
+      navigate('/');
+    }).catch((error) => {
+      // An error happened.
+      console.log(error);
+    });
     };
+
+  const { currentUser } = useContext(AuthContext);
+
 
 
   return (
@@ -186,7 +198,19 @@ function NavBar() {
                 Perks
               </Button>
               
+            {currentUser ? (
             
+              <Button
+                key={'logout'}
+                onClick={() => logoutuser()}
+                sx={{ my: 2, color: '#EA526F', display: 'block', "&:hover": {
+                  color: '#07060A',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease-in'}}}
+              >
+                Logout
+              </Button>
+            ) : (
               <Button
                 key={'register'}
                 onClick={() => handleLink('/signup')}
@@ -197,6 +221,8 @@ function NavBar() {
               >
                 Register
               </Button>
+            )}
+
              
             
           </Box>
