@@ -1,0 +1,63 @@
+body {
+    margin: auto;
+    box-sizing: border-box;
+    max-width: 1000px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.instructions {
+    margin-left: 30px;
+}
+
+.game {
+    text-align: center;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.blue {
+    background-color: deepskyblue;
+}
+.green {
+    background-color: forestgreen;
+}
+.yellow {
+    background-color: yellow;
+}
+.red {
+    background-color: crimson;
+}
+
+.onClick {
+    background-color: darkgray;
+}
+
+.lose {
+    background-color: darkred;
+}
+
+@media only screen and (max-width: 400px) {
+    .container {
+        width: 350px;   
+    }
+
+    .btn {
+        width: 150px;
+        height: 150px;
+    }
+}
