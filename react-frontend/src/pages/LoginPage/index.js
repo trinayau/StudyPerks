@@ -62,7 +62,7 @@ export default function LoginPage() {
       const res = await signInWithEmailAndPassword(auth, email, password
       );
       console.log(res);
-      navigate('/')
+      navigate('/account')
 
     } catch(err){
       setErr(true);
