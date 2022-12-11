@@ -74,7 +74,7 @@ const Profile = () => {
         if(res.exists() & !userExists){
             // add currentUser.uid to user array in room:
             const newUsers = data.users;
-            newUsers.push({uid: currentUser.uid, displayName: currentUser.displayName, topic: currentUser.topic});
+            newUsers.push({uid: currentUser.uid, displayName: currentUser.displayName});
             await setDoc(doc(db, "rooms", roomId), {
                 users: newUsers,
             }, {merge: true});
