@@ -1,12 +1,19 @@
 import { Avatar } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Message = ({ message }) => {
-  const { currentuser } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
+
+  const ref = useRef()
+
+  useEffect(() => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+    }, [message]);
+
 
   return (
-    <div className="message owner">
+    <div ref={ref} className={`message ${message.senderId === currentUser.uid && "owner"}`}>
       <div className="messageInfo">
         <Avatar src="#"alt={message.senderName.toUpperCase()} name={message.senderId} />
         <span>Just now</span>
