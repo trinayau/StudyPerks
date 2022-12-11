@@ -7,17 +7,11 @@ const StudyRoom = () => {
     return ( 
         <>
     <div className="studyroom">
-
         <div className="studyroom-container">
-            
         <Sidebar/>
         <Chat/>
-        
-
-
         </div>
         <BackButton/>
-      
     </div>
     </> );
 }

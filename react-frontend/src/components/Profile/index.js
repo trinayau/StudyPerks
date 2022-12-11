@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { getDocs, collection, query, where, getDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 const Profile = () => {
+    const navigate = useNavigate();
 
     const {currentUser} = useContext(AuthContext);
 
@@ -12,12 +13,12 @@ const Profile = () => {
         // check whether room exists in firestore, if not create new one:
         const roomId = currentUser.uid
         try{
-        const res = await getDocs(db, "rooms", roomId);
+        const res = await getDoc(doc(db, "rooms", roomId));
+        const data = res.data();
 
         if(!res.exists()){
             // create room in room collection
             await setDoc(doc(db, "rooms", roomId), {
-                // add uid of user who created the room to users array:
                 users: [currentUser.uid],
                 messages: [],
                 timer: 25,
@@ -27,9 +28,15 @@ const Profile = () => {
                 active: true,
                 desc: "This is a general room for all subjects"
             });
+            navigate("/studyroom/" + roomId)
+        } else {
+            alert("You already have a room");
+            navigate("/studyroom/" + roomId)
         }
 
-        console.log(res);
+        // get res data from firestore:
+  
+            console.log(data);
         } catch(err){
             console.log(err);
         }

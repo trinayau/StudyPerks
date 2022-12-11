@@ -11,7 +11,7 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 10px;
 
 }
 .instructions {
@@ -99,8 +99,21 @@ p.gameNum{
         width: 350px;   
     }
 
-    .btn {
-        width: 150px;
-        height: 150px;
+    .gbtn {
+        width: 70px;
+        height: 70px;
+    }
+
+    .instructions{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 0px;
+        font-size: 13px;
+
+    }
+
+    .game {
+        width: 350px;
     }
 }
