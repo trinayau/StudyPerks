@@ -31,7 +31,7 @@ const SimonGame = () => {
         const colors = ["blue", "green", "red", "yellow"];
         const randomColor = colors[Math.floor(Math.random() * 4)];
         setGamePattern([...gamePattern, randomColor]);
-        console.log('Game:', gamePattern)
+
         setTimeout(() => {
             flash(randomColor);
         }
@@ -50,14 +50,14 @@ const SimonGame = () => {
     const checkPatterns = (currentLevel) => {
 
         if (gamePattern[currentLevel] ===  userPattern[currentLevel]) {
-            console.log("success");
+
             if (userPattern.length === gamePattern.length) {
                 setTimeout(() => {
                     nextColor();
                 }, 1000);
             }
         } else {
-            console.log("game over");
+
             document.getElementsByClassName("game-start")[0].style.display = "block";
             setText("Game Over. Try Again?");
             setStart(false);

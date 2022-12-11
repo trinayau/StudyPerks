@@ -2,12 +2,34 @@ import CatProfile from './images/icons8-cat-profile-80.png'
 import Timer from './images/icons8-timer-64.png'
 import Fire from './images/icons8-fire-94.png'
 import Rank from './images/icons8-ranking-64.png'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { db } from '../../firebase'
+import {Button} from '@mui/material'
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import {getAuth} from 'firebase/auth'
 
 
 const AccountPage = () => {
     const {currentUser} = useContext(AuthContext)
+    const [topic, setTopic] = useState(''
+    )
+
+    console.log(currentUser)
+
+    const handleTopic = async (e) => {
+        e.preventDefault()
+        const res = await getAuth().setCustomUserClaims(currentUser.uid, {topic: topic})
+        console.log(res)
+    }
+
+    const showForm = () => {
+        document.querySelector('form').style.display = 'block'
+    }
+
+    
+    
+
 
     return ( <div className="accountPage">
             <div class="user">
@@ -17,6 +39,14 @@ const AccountPage = () => {
         <div class="userinfo">
             <h3>{currentUser && currentUser.displayName}</h3>
             <p>{currentUser && currentUser.email}</p>
+            {/* {currentUser && <><p>Studying: {currentUser.email}</p><br/><Button onClick={showForm}>Change</Button></> 
+            } */}
+            {/* <form onSubmit={handleTopic} style={{display:'none'}}>
+                <label for="topic">What are you studying?</label><br/>
+                <input type="text" id="topic" name="topic" value={topic} onChange={(e) => setTopic(e.target.value)}/>
+                <input type="submit" value="Submit"/>
+            </form> */}
+
         </div>
     </div>
 

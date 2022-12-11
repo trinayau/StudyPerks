@@ -23,7 +23,6 @@ const Chats = () => {
     roomId && getChats();
   }, [roomId]);
 
-  console.log(roomUsers.forEach((user) => console.log(user)));
 
   return (
     <div className="chats">
@@ -44,7 +43,7 @@ const Chats = () => {
         />
         <div className="userChatInfo">
           <span className="username">{user.displayName}</span>
-          <p>Studying: Biology 101</p>
+          <p>Studying: {user.topic}</p>
         </div>
       </div>
 

@@ -102,7 +102,7 @@ export default function LoginPage() {
         }}
       >
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-            You have successfully registered! Please login to continue.
+            You have successfully registered!
         </Alert>
       </Snackbar>
       <div style={{}}>

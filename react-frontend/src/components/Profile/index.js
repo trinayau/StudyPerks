@@ -16,7 +16,7 @@ const Profile = () => {
         const roomId = currentUser.uid
         try{
         const res = await getDoc(doc(db, "rooms", roomId));
-        const data = res.data();
+        
 
         if(!res.exists()){
             // create room in room collection
@@ -32,6 +32,11 @@ const Profile = () => {
                 desc: "This is a general room for all subjects",
                 createdAt: serverTimestamp(),
             });
+            // create roomMessages collection:
+            await setDoc(doc(db, "roomMessages", roomId), {
+                messages: [],
+            });
+
             navigate("/studyroom/" + roomId)
         } else {
             alert("You already have a room");
@@ -69,15 +74,14 @@ const Profile = () => {
         if(res.exists() & !userExists){
             // add currentUser.uid to user array in room:
             const newUsers = data.users;
-            newUsers.push({uid: currentUser.uid, displayName: currentUser.displayName});
+            newUsers.push({uid: currentUser.uid, displayName: currentUser.displayName, topic: currentUser.topic});
             await setDoc(doc(db, "rooms", roomId), {
                 users: newUsers,
             }, {merge: true});
             navigate("/studyroom/" + roomId)
         } else if(res.exists() & userExists){
-            alert("You are already in this room");
             navigate("/studyroom/" + roomId)
-            
+
         } else {
             alert("Room does not exist");
         }

@@ -1,16 +1,21 @@
-import {Avatar} from '@mui/material';
-const Message = () => {
-    return ( <div className="message owner">
-        <div className="messageInfo">
-            <Avatar alt="A" name="A" />
-            <span>Just now</span>
-        </div>
-        <div className="messageContent">
-            <p>Hey guys!</p>
+import { Avatar } from "@mui/material";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
+const Message = ({ message }) => {
+  const { currentuser } = useContext(AuthContext);
 
-        </div>
-    </div> );
-}
- 
+  return (
+    <div className="message owner">
+      <div className="messageInfo">
+        <Avatar src="#"alt={message.senderName.toUpperCase()} name={message.senderId} />
+        <span>Just now</span>
+      </div>
+      <div className="messageContent">
+        <p>{message.text}</p>
+      </div>
+    </div>
+  );
+};
+
 export default Message;

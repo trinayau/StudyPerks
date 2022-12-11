@@ -61,7 +61,8 @@ export default function SignUpPage() {
         displayName: displayName,
         email: email,
         uid: res.user.uid,
-        points: 0
+        points: 0,
+        topic: null,
       });
       navigate("/login?redirect=true")
 
