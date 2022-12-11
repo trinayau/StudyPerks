@@ -8,7 +8,7 @@
 .gamecontainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
@@ -28,8 +28,8 @@
     justify-content: center;
 }
 .gbtn {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 20px;
     text-align: center;
     display: flex;
@@ -91,12 +91,16 @@ p.gameNum{
     transition: all 0.3s ease;
 }
 
-/* colour blind version */
 
-
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 768px) {
     .gamecontainer {
-        width: 350px;   
+        max-width: 250px;   
+        overflow-x: hidden;
+        align-items: left!important;
+    }
+
+    .gamecontainer p{
+        max-width: 250px;
     }
 
     .gbtn {
@@ -115,5 +119,10 @@ p.gameNum{
 
     .game {
         width: 350px;
+    }
+
+    p.gameNum{
+        font-size: 20px;
+        padding-top: 25px;
     }
 }

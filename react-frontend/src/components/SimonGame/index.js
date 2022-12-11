@@ -86,7 +86,8 @@ const SimonGame = () => {
             <p>Every level a color will flash</p>
             <p>Will you remember the sequence at which the colours flash in?</p>
             <p>Try now and test your memory</p>
-            <p>Difficulty seeing colours? Click the eye icon below to helpstill:</p>
+            <p>Difficulty seeing colours?</p>
+            <p> Click the eye icon below to help:</p>
             <span><i class="fa-solid fa-eye" style={{fontSize: 30}} onClick={()=>{colourAccessibility()}}></i></span>
 
         </div>

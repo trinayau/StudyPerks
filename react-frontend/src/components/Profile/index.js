@@ -1,5 +1,5 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { getDocs, collection, query, where, getDoc, doc, setDoc } from "firebase/firestore";
+import { getDocs, collection, query, where, getDoc, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -26,7 +26,8 @@ const Profile = () => {
                 subject: "General",
                 host: currentUser.uid,
                 active: true,
-                desc: "This is a general room for all subjects"
+                desc: "This is a general room for all subjects",
+                createdAt: serverTimestamp(),
             });
             navigate("/studyroom/" + roomId)
         } else {

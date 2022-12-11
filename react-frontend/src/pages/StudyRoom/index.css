@@ -115,7 +115,7 @@
 .messages{
     background-color: rgba(0, 0, 0, 0.4);
     padding: 10px;
-    height: calc(100% - 21%);
+    height: calc(100% - 18%);
     overflow-y: scroll;
 }
 
@@ -139,7 +139,6 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-bottom: 10px;
     font-weight: 300;
     margin-bottom: 20px;
 }
@@ -238,4 +237,9 @@
     .userAvatar{
         display: none!important;
     }
+
+    .user{
+        display: none!important;
+    }
+
 }

@@ -36,8 +36,8 @@ const Chat = () => {
         console.log("message")
     }
     return ( <div className="chat">
-       <div className="chatInfo">
-            7-8pm Study Group
+       <div className="chatInfo" style={{color: 'white'}}>
+            Instant Study Group
         <div className="chatIcons">
             <IconButton onClick={()=>handlePomodoro()}>
                 <AccessAlarmIcon />

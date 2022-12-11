@@ -21,7 +21,7 @@ const ChatNav = () => {
       updateDoc(doc(db, "rooms", roomId), {
         users: currentUser.uid,
       });
-      
+
     }
 
   return (
@@ -48,6 +48,7 @@ const ChatNav = () => {
       </div>
       <Button
         variant="contained"
+        className="leaveBtn"
         sx={{ backgroundColor: "#AA384A", color: "#fff", fontSize: "14px", borderRadius: "5px",
         "&:hover": {
           backgroundColor: "#EA526F",
