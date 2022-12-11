@@ -8,8 +8,8 @@ const { Client } = require("pg");
 
 (async () => {
   const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-    application_name: "$ docs_quickstart_node"
+    connectionString: 'postgresql://trini:hackathonwin@study-perks-3878.6zw.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full',
+    application_name: "$ study-perks"
   });
 
   const statements = [
@@ -41,4 +41,50 @@ const { Client } = require("pg");
   process.exit();
 })().catch((err) => console.log(err.stack));
 
-const { Client } = require("pg");
+// option to add oerks to the database
+const addPerk = async (perk) => {
+  const perkRef = db.collection('perks').doc();
+  await perkRef.set({
+    perkId: perkRef.id,
+    perkName: perk.perkName,
+    perkDescription: perk.perkDescription,
+    perkPoints: perk.perkPoints,
+    perkCategory: perk.perkCategory,
+    perkQuantity: perk.perkQuantity,
+  });
+    return perkRef.id;
+}
+
+addPerk(
+    {
+        perkName: 'Starbucks',
+        perkDescription: 'Tall Latte/Cuppucino/Americano/tea',
+        perkImage: 'https://www.coffeeshop.com/coffee.jpg',
+        perkPoints: 200,
+        perkCategory: 'Food',
+        perkQuantity: 10,
+    }
+
+)
+addPerk(
+    {
+        perkName: 'Costa',
+        perkDescription: 'Medium Latte/Cuppucino/Americano/tea',
+        perkImage: 'https://www.coffeeshop.com/coffee.jpg',
+        perkPoints: 200,
+        perkCategory: 'Food',
+        perkQuantity: 10,
+    }
+
+)
+addPerk(
+    {
+        perkName: 'Gongcha',
+        perkDescription: 'Milk tea with pearls',
+        perkImage: 'https://www.coffeeshop.com/coffee.jpg',
+        perkPoints: 300,
+        perkCategory: 'Food',
+        perkQuantity: 20,
+    }
+
+)
