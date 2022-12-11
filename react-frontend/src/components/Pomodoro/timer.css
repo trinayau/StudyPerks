@@ -1,29 +1,17 @@
 :root {
-    --ascent-color: #753362;
-    --font-color: #EA526F;
-    --secondary-color: #FF8A5B;
+    --pomo-ascent-color: #753362;
+    --pomo-font-color: #EA526F;
+    --pomo-secondary-color: #FF8A5B;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html, body {
-    height: 100vh;
-    background: radial-gradient(white, #FCEADE);
-    background-repeat: no-repeat;
-    font-family: 'Montserrat', sans-serif;
-}
-
-p, i, h1 {
-    color: var(--font-color);
+.container-pomodoro p, i, h1 {
+    color: var(--pomo-font-color);
     font-size: 16px;
 }
 
 
-section {
+.container-pomodoro section {
     display: flex;
     align-items: center;
     height: 50vh;
@@ -58,7 +46,7 @@ section {
 .panel p.active {
     opacity: 1;
     font-weight: bold;
-    color: var(--ascent-color)
+    color: var(--pomo-ascent-color)
 }
 
 .timer {

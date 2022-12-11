@@ -5,17 +5,17 @@ import { AuthContext } from "../../context/AuthContext";
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
 
-  const ref = useRef()
+  // const ref = useRef()
 
-  useEffect(() => {
-    ref.current.scrollIntoView({ behavior: "smooth" });
-    }, [message]);
+  // useEffect(() => {
+  //   ref.current.scrollIntoView({ behavior: "smooth" });
+  //   }, [message]);
 
 
   return (
-    <div ref={ref} className={`message ${message.senderId === currentUser.uid && "owner"}`}>
+    <div className={`message ${message.senderId === currentUser.uid && "owner"}`}>
       <div className="messageInfo">
-        <Avatar src="#"alt={message.senderName.toUpperCase()} name={message.senderId} />
+        <Avatar src="#"alt={message.senderName} name={message.senderId} />
         <span>Just now</span>
       </div>
       <div className="messageContent">

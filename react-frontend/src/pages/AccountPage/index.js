@@ -2,7 +2,7 @@ import CatProfile from './images/icons8-cat-profile-80.png'
 import Timer from './images/icons8-timer-64.png'
 import Fire from './images/icons8-fire-94.png'
 import Rank from './images/icons8-ranking-64.png'
-import { useContext, useState } from 'react'
+import { useContext, useState, useParams } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { db } from '../../firebase'
 import {Button} from '@mui/material'
@@ -19,15 +19,22 @@ const AccountPage = () => {
 
     const handleTopic = async (e) => {
         e.preventDefault()
-        const res = await getAuth().setCustomUserClaims(currentUser.uid, {topic: topic})
-        console.log(res)
+        const topic = e.target[0].value
+    //    update topic in users array in rooms collection:
+        const userRef = doc(db, "rooms", currentUser.uid);
+        const userDoc = await getDoc(userRef);
+        const user = userDoc.data();
+        await setDoc(userRef, {
+            ...user,
+            topic: topic
+        });
+
     }
 
     const showForm = () => {
         document.querySelector('form').style.display = 'block'
     }
 
-    
     
 
 

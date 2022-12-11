@@ -9,6 +9,8 @@ import {db} from '../../firebase';
 const ChatNav = () => {
     const { roomId } = useParams();
     const {currentUser} = useContext(AuthContext);
+    // const [topic, setTopic] = useState(''
+    // )
 
     const navigate = useNavigate();
 
@@ -29,13 +31,11 @@ const ChatNav = () => {
       });
 
       // navigate to account page:
-      navigate("/account");
-
-
-
-      
+      navigate("/account")
 
     }
+
+        
 
   return (
     <div className="chatnav">
@@ -52,13 +52,23 @@ const ChatNav = () => {
         }}
       >
         <Avatar
-          alt={currentUser && currentUser.displayName.toUpperCase()}
+          alt={currentUser && currentUser.displayName}
           src="/static/images/avatar/1.jpg"
           sx={{height: "30px", width: "30px", fontSize: "14px", backgroundColor: "#EA526F" }}
         />
         <span className="username">{ currentUser && currentUser.displayName }</span>
 
       </div>
+      {/* set topic: */}
+      {/* <div className="topic">
+        <span className="topicTitle">Topic:</span>
+       
+        <form className="topicForm" onSubmit={handleTopic}>
+          <input type="text" placeholder="Enter topic" />
+        </form>
+      </div> */}
+
+      
       <Button
         variant="contained"
         className="leaveBtn"

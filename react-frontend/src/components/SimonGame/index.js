@@ -1,5 +1,14 @@
 import './styles.css';
 import {useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {useEffect} from 'react';
+import {useContext} from 'react';
+import {AuthContext} from '../../context/AuthContext';
+import {db} from '../../firebase';
+import {getDoc, doc, updateDoc, arrayUnion, Timestamp} from 'firebase/firestore';
+import {v4 as uuid} from 'uuid';
+import {useNavigate} from 'react-router-dom';
+
 const SimonGame = () => {
 
     const [start, setStart] = useState(false);
@@ -7,6 +16,9 @@ const SimonGame = () => {
     const [text, setText] = useState("Start Game");
     const [gamePattern, setGamePattern] = useState([]);
     const [addNum, setAddNum] = useState(false);
+
+    const {roomId} = useParams();
+    const {currentUser} = useContext(AuthContext);
     let userPattern = [];
 
     const startGame = () => {
@@ -60,10 +72,29 @@ const SimonGame = () => {
 
             document.getElementsByClassName("game-start")[0].style.display = "block";
             setText("Game Over. Try Again?");
+
+            handleSend(`${currentUser.displayName} has lost the game at level ${level}.`)
             setStart(false);
             setLevel(false);
             setGamePattern([]);
         }
+    }
+
+    const handleSend = async(msg) => {
+        console.log('handleSend', msg)
+        if(msg !== '') {
+            await updateDoc(doc(db, "roomMessages", roomId), {
+            messages: arrayUnion({
+                id: uuid(),
+                text: msg,
+                senderId: currentUser.uid,
+                senderName: currentUser.displayName,
+                date: Timestamp.now(),
+
+            })
+        })
+    
+    }
     }
 
     const colourAccessibility = () => {

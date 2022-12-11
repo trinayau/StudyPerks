@@ -211,7 +211,7 @@ function NavBar() {
              
               <Button
                 key={'contact'}
-                onClick={() => handleLink('/contact')}
+                onClick={() => handleLink('/account')}
                 sx={{ my: 2, color: '#07060A', display: 'block', "&:hover": {
                   color: '#52796f',
                   textDecoration: 'none',

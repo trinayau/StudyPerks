@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-// import './timer.css';
+import './timer.css';
 
 const Pomodoro = () => {
 
@@ -17,7 +17,6 @@ const Pomodoro = () => {
         document.getElementById('seconds').innerHTML = seconds;
 
         // workTitle.classList.add('active');
-
     }, []);
 
     // start timer
@@ -93,7 +92,7 @@ const Pomodoro = () => {
 
             <div class="controls">
                 <button id="start" 
-                // onClick={()=>start()}
+                onClick={start}
                 ><i class="fa-solid fa-play"></i></button>
                 <a id="reset" href="timer.html"><i class="fa-solid fa-arrow-rotate-left"></i></a>
             </div>
