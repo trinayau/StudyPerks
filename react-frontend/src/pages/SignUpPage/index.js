@@ -112,7 +112,7 @@ export default function SignUpPage() {
                 autoFocus
                 sx={{
                   "& .MuiInputBase-root": {
-                    color: "white",
+                    color: "black",
                   },
                 }}
               />
@@ -126,11 +126,11 @@ export default function SignUpPage() {
                 autoComplete="false"
                 autoFocus
                 sx={{        "& .MuiInputBase-root": {
-                  color: 'white'
+                  color: 'black'
               },
             // placeholder
             "& .MuiInputBase-input::placeholder": {
-              color: "white",
+              color: "black",
             },
             }}
               />
@@ -144,7 +144,7 @@ export default function SignUpPage() {
                 id="password"
                 autoComplete="false"
                 sx={{        "& .MuiInputBase-root": {
-                  color: 'white'
+                  color: 'black'
               }}}
               />
               <FormControlLabel

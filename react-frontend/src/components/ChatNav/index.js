@@ -1,26 +1,39 @@
 import { Avatar, Button } from "@mui/material";
 import { Settings } from "@mui/icons-material";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import {updateDoc, doc} from 'firebase/firestore';
+import {updateDoc, doc, getDoc} from 'firebase/firestore';
 import {db} from '../../firebase';
 
 const ChatNav = () => {
     const { roomId } = useParams();
     const {currentUser} = useContext(AuthContext);
 
-    const handleLeaveRoom = (roomId) => {
+    const navigate = useNavigate();
 
-      // update the user's room id to null
-      updateDoc(doc(db, "users", currentUser.uid), {
-        roomId: null,
+    const handleLeaveRoom = async (roomId) => {
+
+
+      // get user array for roomid in rooms collection:
+      const roomRef = doc(db, "rooms", roomId);
+      const roomDoc = await getDoc(roomRef);
+      const roomUsers = roomDoc.data().users;
+
+      // remove current user from roomUsers array:
+      const newRoomUsers = roomUsers.filter((user) => user.uid !== currentUser.uid);
+
+      // update roomUsers array in rooms collection:
+      await updateDoc(roomRef, {
+        users: newRoomUsers
       });
 
-      // update the room's user list to remove the user
-      updateDoc(doc(db, "rooms", roomId), {
-        users: currentUser.uid,
-      });
+      // navigate to account page:
+      navigate("/account");
+
+
+
+      
 
     }
 
