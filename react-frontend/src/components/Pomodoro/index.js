@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './timer.css';
+// import './timer.css';
 
 const Pomodoro = () => {
 

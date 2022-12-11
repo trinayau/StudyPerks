@@ -1,5 +1,42 @@
 import { Link } from "react-router-dom";
+import { getDocs, collection, query, where, getDoc, doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
 const Profile = () => {
+
+    const {currentUser} = useContext(AuthContext);
+
+    const handleSelect = async() => {
+        // check whether room exists in firestore, if not create new one:
+        const roomId = currentUser.uid
+        try{
+        const res = await getDocs(db, "rooms", roomId);
+
+        if(!res.exists()){
+            // create room in room collection
+            await setDoc(doc(db, "rooms", roomId), {
+                // add uid of user who created the room to users array:
+                users: [currentUser.uid],
+                messages: [],
+                timer: 25,
+                break: 5,
+                subject: "General",
+                host: currentUser.uid,
+                active: true,
+                desc: "This is a general room for all subjects"
+            });
+        }
+
+        console.log(res);
+        } catch(err){
+            console.log(err);
+        }
+
+        //create room in firestore
+
+    }
 
     return ( <>
     <hr/>
@@ -35,7 +72,7 @@ const Profile = () => {
     </div>
 
     <div class="room-links prof">
-        <div class="btn">create your own</div>
+        <div class="btn" onClick={handleSelect}>create your own</div>
         <a href="#">See more available rooms <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
     </div>
 </div>

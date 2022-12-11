@@ -135,6 +135,7 @@ export default function LoginPage() {
               fullWidth
               id="email"
               label="Email Address"
+              htmlFor="email"
               name="email"
               autoComplete="email"
               autoFocus

@@ -6,6 +6,7 @@ const SimonGame = () => {
     const [level, setLevel] = useState(null);
     const [text, setText] = useState("Start Game");
     const [gamePattern, setGamePattern] = useState([]);
+    const [addNum, setAddNum] = useState(false);
     let userPattern = [];
 
     const startGame = () => {
@@ -65,6 +66,18 @@ const SimonGame = () => {
         }
     }
 
+    const colourAccessibility = () => {
+        // if eye icon is hidden, show numbers:
+        if (addNum) {
+            setAddNum(false);
+            document.getElementsByClassName("fa-eye")[0].style.color = "white";
+            return;
+        }
+        // if eye icon is shown, hide numbers:
+        setAddNum(true);
+        document.getElementsByClassName("fa-eye")[0].style.color = "pink";
+    }
+
 
     return ( 
         <div class="gamecontainer">
@@ -73,6 +86,9 @@ const SimonGame = () => {
             <p>Every level a color will flash</p>
             <p>Will you remember the sequence at which the colours flash in?</p>
             <p>Try now and test your memory</p>
+            <p>Difficulty seeing colours? Click the eye icon below to helpstill:</p>
+            <span><i class="fa-solid fa-eye" style={{fontSize: 30}} onClick={()=>{colourAccessibility()}}></i></span>
+
         </div>
       
         <div class="game">
@@ -80,12 +96,12 @@ const SimonGame = () => {
             {level && <h1 className="game-start">Level {level}</h1>}
             {start && <>
             <div class="gamerow">
-                <div id="blue" class="gbtn blue" onClick={() => handleClick('blue') }></div>
-                <div id="green" class="gbtn green" onClick={() => handleClick('green') }></div>
+                <div id="blue" class="gbtn blue" onClick={() => handleClick('blue') }>{addNum && <p className="gameNum">1</p>}</div>
+                <div id="green" class="gbtn green" onClick={() => handleClick('green') }>{addNum && <p className="gameNum">2</p>}</div>
             </div>
             <div class="gamerow">
-                <div id="yellow" class="gbtn yellow" onClick={() => handleClick('yellow') }></div>
-                <div id="red" class="gbtn red" onClick={() => handleClick('red') }></div>
+                <div id="yellow" class="gbtn yellow" onClick={() => handleClick('yellow') }>{addNum && <p className="gameNum">3</p>}</div>
+                <div id="red" class="gbtn red" onClick={() => handleClick('red') }>{addNum && <p className="gameNum">4</p>}</div>
             </div>
             </>}
         </div>

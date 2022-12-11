@@ -36,7 +36,7 @@ function NavBar() {
 
 
   useEffect(() => {
-      if (window.location.href === "http://localhost:3000/" && currentUser) {
+      if (window.location.href === "http://localhost:3000/") {
           setHomePage(true);
       } else if(window.location.href==="http://localhost:3000/account" && currentUser){
         setHomePage(false);
