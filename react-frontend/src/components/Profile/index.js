@@ -19,7 +19,8 @@ const Profile = () => {
         if(!res.exists()){
             // create room in room collection
             await setDoc(doc(db, "rooms", roomId), {
-                users: [currentUser.uid],
+                // users is an array containing objects of uid and displayName:
+                users: [{uid: currentUser.uid, displayName: currentUser.displayName}],
                 messages: [],
                 timer: 25,
                 break: 5,
