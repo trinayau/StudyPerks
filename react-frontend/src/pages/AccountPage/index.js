@@ -5,7 +5,7 @@ import Rank from './images/icons8-ranking-64.png'
 import { useContext, useState, useParams } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { db } from '../../firebase'
-import {Button} from '@mui/material'
+import {Button, Snackbar, Alert} from '@mui/material'
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import {getAuth} from 'firebase/auth'
 
@@ -14,8 +14,24 @@ const AccountPage = () => {
     const {currentUser} = useContext(AuthContext)
     const [topic, setTopic] = useState(''
     )
+    const [state, setState] = useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+      });
+      const { vertical, horizontal, open } = state;
 
-    console.log(currentUser)
+    const handleClick = (newState) => {
+        setState({ open: true, ...newState });
+    };
+  
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setState({ ...state, open: false });
+    };
 
     const handleTopic = async (e) => {
         e.preventDefault()
@@ -35,10 +51,27 @@ const AccountPage = () => {
         document.querySelector('form').style.display = 'block'
     }
 
-    
+    const handleClaim = async (e, id) => {
+        e.preventDefault()
+
+        // hide the perk with id:
+        document.getElementById(id).style.display = 'none';
+        handleClick({
+            vertical: 'top',
+            horizontal: 'right',
+          });
+
+
+    }
 
 
     return ( <div className="accountPage">
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Congrats! Your StudyPerk will be sent via email!
+        </Alert>
+      </Snackbar>
+
             <div class="user">
         <div class="avatar">
             <img src={CatProfile} alt="profile icon with cat on it"/>
@@ -98,26 +131,26 @@ const AccountPage = () => {
         <p>Total hours studied: 17.7hrs</p>
     </div>
     <div class="col-2 claims">
-        <div class="reward">
+        <div class="reward" id="1">
             <div class="claimText">
                 <span>Starbucks</span>
                 <p>Tall Latte/Cuppucino/Americano/tea</p>
             </div>
-            <div class="btn claim">200 pts</div>
+            <div class="btn claim" onClick={(e)=>{handleClaim(e, 1)}}>200 pts</div>
         </div>
-        <div class="reward">
+        <div class="reward" id="2">
             <div class="claimText">
                 <span>Costa</span>
                 <p>Medium Latte/Cuppucino/Americano/tea</p>
             </div>
-            <div class="btn claim">200pts</div>
+            <div class="btn claim"  onClick={(e)=>{handleClaim(e, 2)}}>200pts</div>
         </div>
-        <div class="reward">
+        <div class="reward" id="3">
             <div class="claimText">
                 <span>Gongcha</span>
                 <p>Milk tea with pearls</p>
             </div>
-            <div class="btn claim">300 pts</div>
+            <div class="btn claim"  onClick={(e)=>{handleClaim(e, 3)}}>300 pts</div>
         </div>
     </div>
 </div>

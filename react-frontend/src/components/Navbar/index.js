@@ -36,9 +36,9 @@ function NavBar() {
 
 
   useEffect(() => {
-      if (window.location.href === "http://localhost:3000/") {
+      if (window.location.href === "https://studyperks.tech/") {
           setHomePage(true);
-      } else if(window.location.href==="http://localhost:3000/account" && currentUser){
+      } else if(window.location.href==="https://studyperks.tech/account" && currentUser){
         setHomePage(false);
           setProfilePage(true);
       } 
