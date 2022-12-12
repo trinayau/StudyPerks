@@ -28,8 +28,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://carbonaltdel.tech/">
-        CarbonAltDel
+      <Link color="inherit" href="https://studyperks.tech/">
+        StudyPerks
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -117,7 +117,7 @@ export default function LoginPage() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "#84a98c" }}>
+          <Avatar sx={{ m: 1, bgcolor: "#EA526F" }}>
             <LockIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -168,7 +168,7 @@ export default function LoginPage() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: "#52796F" }}
+              sx={{ mt: 3, mb: 2, bgcolor: "#EA526F" }}
             >
               Sign In
             </Button>
@@ -178,12 +178,12 @@ export default function LoginPage() {
 
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2" sx={{ color: "#84a98c" }}>
+                <Link href="#" variant="body2" sx={{ color: "#EA526F" }}>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2" sx={{ color: "#84a98c" }}>
+                <Link href="/signup" variant="body2" sx={{ color: "#EA526F" }}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
