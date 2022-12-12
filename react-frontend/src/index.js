@@ -8,11 +8,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <AuthContextProvider>
-  <React.StrictMode>
     <Router>
     <App />
     </Router>
-  </React.StrictMode>
   </AuthContextProvider>
 );
 
